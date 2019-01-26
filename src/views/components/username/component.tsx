@@ -19,7 +19,7 @@ function Username({
       <form onSubmit={onUsernameSubmit}>
         <label>Username</label>
         <input onChange={onUsernameChange} />
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </React.Fragment>
   );

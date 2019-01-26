@@ -1,8 +1,8 @@
-import * as React from 'react';
 import gql from 'graphql-tag';
+import * as React from 'react';
+import {Query} from 'react-apollo';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {Query} from 'react-apollo';
 import * as actions from '../store/general/actions';
 import Username from './components/username/component';
 
@@ -24,14 +24,14 @@ export class MainView extends React.Component<Props, State> {
     this.onUsernameSubmit = this.onUsernameSubmit.bind(this);
   }
 
-  onUserNameChange(event: any) {
+  public onUserNameChange(event: any) {
     event.preventDefault();
     this.setState({
       username: event.currentTarget.value,
     });
   }
 
-  onUsernameSubmit(event: any) {
+  public onUsernameSubmit(event: any) {
     event.preventDefault();
     this.props.setUsername(this.state.username);
   }
@@ -60,8 +60,12 @@ export class MainView extends React.Component<Props, State> {
           `}
         >
           {({loading, error, data}) => {
-            if (loading) return <p>LOADING...</p>;
-            if (error) return <p>ERROR</p>;
+            if (loading) {
+              return <p>LOADING...</p>;
+            }
+            if (error) {
+              return <p>ERROR</p>;
+            }
             console.log(data);
 
             // return data.searchGame[0].name[0].name;

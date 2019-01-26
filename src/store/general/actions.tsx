@@ -9,7 +9,7 @@ export type GeneralAction = SetUsername;
 
 export function setUsername(username: string): SetUsername {
   return {
-    username,
     type: constants.SET_USERNAME,
+    username,
   };
 }
