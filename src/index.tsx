@@ -6,13 +6,26 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import {myStore} from './store';
+import {ApolloProvider} from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+
+const SERVERS = {
+  LOCAL: 'http://graphql.localhost.tv:4000/graphql',
+  PROD: 'https://bgg-api.alexwilkinson.co/graphql',
+};
+
+const client = new ApolloClient({
+  uri: SERVERS.PROD,
+});
 
 ReactDOM.render(
-  <Provider store={myStore}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={myStore}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
