@@ -1,13 +1,30 @@
 import * as React from 'react';
+import styled from 'styled-components';
+import MainFooter from './_layout/MainFooter';
+import MainHeader from './_layout/MainHeader';
 import './App.css';
 import AppRouter from './routing/appRouter';
+
+const SiteContainer = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+`;
+
+const SiteMainContent = styled.div`
+  flex: 1;
+`;
 
 class App extends React.Component {
   public render() {
     return (
-      <React.Fragment>
-        <AppRouter />
-      </React.Fragment>
+      <SiteContainer>
+        <MainHeader />
+        <SiteMainContent>
+          <AppRouter />
+        </SiteMainContent>
+        <MainFooter />
+      </SiteContainer>
     );
   }
 }

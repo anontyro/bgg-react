@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 import * as React from 'react';
-import {Query} from 'react-apollo';
-import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
+import { Query } from 'react-apollo';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import * as actions from '../store/general/actions';
 import Username from './components/username/component';
 
@@ -18,7 +18,7 @@ export interface State {
 export class MainView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = {username: this.props.username};
+    this.state = { username: this.props.username };
 
     this.onUserNameChange = this.onUserNameChange.bind(this);
     this.onUsernameSubmit = this.onUsernameSubmit.bind(this);
@@ -37,6 +37,14 @@ export class MainView extends React.Component<Props, State> {
   }
 
   public render() {
+    /*
+      GENERAL DESIGN LAYOUT
+
+      BIG_LOGO + SEARCH BAR
+
+      HOT GAMES REACT_SLICK VIEW
+
+    */
     return (
       <React.Fragment>
         <h1>Username: {this.state.username}</h1>
@@ -59,7 +67,7 @@ export class MainView extends React.Component<Props, State> {
             }
           `}
         >
-          {({loading, error, data}) => {
+          {({ loading, error, data }) => {
             if (loading) {
               return <p>LOADING...</p>;
             }
@@ -85,7 +93,7 @@ export class MainView extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = ({general}: any) => ({
+const mapStateToProps = ({ general }: any) => ({
   username: general.username,
 });
 
@@ -95,5 +103,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MainView);
