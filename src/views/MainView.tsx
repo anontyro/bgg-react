@@ -1,10 +1,8 @@
-import gql from 'graphql-tag';
 import * as React from 'react';
-import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import * as actions from '../store/general/actions';
-import Username from './components/username/component';
+import HotItems from './components/graphql/hotItems/component';
 
 export interface Props {
   username: string;
@@ -45,7 +43,30 @@ export class MainView extends React.Component<Props, State> {
       HOT GAMES REACT_SLICK VIEW
 
     */
+
     return (
+      <React.Fragment>
+        <HotItems />
+      </React.Fragment>
+    );
+  }
+}
+
+const mapStateToProps = ({ general }: any) => ({
+  username: general.username,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setUsername: (name: string) => dispatch(actions.setUsername(name)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainView);
+
+/*
+   return (
       <React.Fragment>
         <h1>Username: {this.state.username}</h1>
         <Username
@@ -90,18 +111,4 @@ export class MainView extends React.Component<Props, State> {
         </Query>
       </React.Fragment>
     );
-  }
-}
-
-const mapStateToProps = ({ general }: any) => ({
-  username: general.username,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setUsername: (name: string) => dispatch(actions.setUsername(name)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MainView);
+ */
