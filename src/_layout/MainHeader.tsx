@@ -8,7 +8,6 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 1rem;
   color: white;
-  width: 100vw;
   background-color: ${BGG_BLUE};
 `;
 

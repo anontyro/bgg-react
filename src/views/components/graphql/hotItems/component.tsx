@@ -13,18 +13,29 @@ interface QueryResponse {
 const PostersContainer = styled.div`
   display: flex;
   overflow-x: auto;
+  width: 96%;
+  margin: auto;
 `;
 
-const PosterItem = styled.div`
-  background-image: ${(props: any) => props.image};
+interface PosterProps {
+  image: string;
+}
+
+const PosterItem = styled.div<PosterProps>`
+  background-image: url(${(props: any) => props.image});
+  background-repeat: no-repeat;
+  height: 10rem;
   min-width: 10rem;
   max-width: 10rem;
+  margin: 1rem;
+  background-size: 100%;
 `;
 
 const GamePoster = (item: HotItemType) => {
+  const image = item.thumbnail;
   return (
-    <PosterItem key={item.id}>
-      <p>{item.name}</p>
+    <PosterItem image={image} key={item.id}>
+      &nbsp;
     </PosterItem>
   );
 };

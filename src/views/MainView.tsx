@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import * as actions from '../store/general/actions';
 import HotItems from './components/graphql/hotItems/component';
+import GeekSearch from './components/geekSearch/component';
 
 export interface Props {
   username: string;
@@ -46,6 +47,7 @@ export class MainView extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
+        <GeekSearch />
         <HotItems />
       </React.Fragment>
     );
