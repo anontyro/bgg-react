@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@types/graphql": "^14.0.5",
+    "@types/lodash.debounce": "^4.0.4",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/styled-components": "^4.1.6",
     "apollo-boost": "^0.1.27",
     "graphql": "^14.1.1",
+    "lodash.debounce": "^4.0.8",
     "react": "^16.7.0",
     "react-apollo": "^2.4.0",
     "react-dom": "^16.7.0",

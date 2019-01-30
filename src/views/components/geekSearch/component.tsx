@@ -1,3 +1,4 @@
+import { debounce } from 'lodash';
 import * as React from 'react';
 import styled from 'styled-components';
 import logo from '../../../static/images/bgg-logo.svg';
@@ -21,13 +22,44 @@ const SearchBar = styled.input`
   box-shadow: 8px 8px 20px -10px black;
 `;
 
-function GeekSearch() {
-  return (
-    <SearchContainer>
-      <GeekLogo src={logo} />
-      <SearchBar placeholder='Search Board Games...' />
-    </SearchContainer>
-  );
+export interface Props {}
+
+export interface State {
+  query: string;
+}
+
+class GeekSearch extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { query: '' };
+
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSubmitSearch = debounce(this.onSubmitSearch, 600);
+  }
+
+  public onSearchChange(event: any) {
+    event.preventDefault();
+    this.setState({
+      query: event.currentTarget.value,
+    });
+    this.onSubmitSearch();
+  }
+
+  public onSubmitSearch() {
+    console.log(`Submitted: ${this.state.query}`);
+  }
+
+  public render() {
+    return (
+      <SearchContainer>
+        <GeekLogo src={logo} />
+        <SearchBar
+          onChange={this.onSearchChange}
+          placeholder='Search Board Games...'
+        />
+      </SearchContainer>
+    );
+  }
 }
 
 export default GeekSearch;
