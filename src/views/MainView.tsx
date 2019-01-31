@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import styled from 'styled-components';
 import * as actions from '../store/general/actions';
 import GeekSearch from './components/geekSearch/component';
 import HotItems from './components/graphql/hotItems/component';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
 
 export interface Props {
   username: string;
@@ -36,20 +44,11 @@ export class MainView extends React.Component<Props, State> {
   }
 
   public render() {
-    /*
-      GENERAL DESIGN LAYOUT
-
-      BIG_LOGO + SEARCH BAR
-
-      HOT GAMES REACT_SLICK VIEW
-
-    */
-
     return (
-      <React.Fragment>
+      <MainContainer>
         <GeekSearch />
         <HotItems />
-      </React.Fragment>
+      </MainContainer>
     );
   }
 }

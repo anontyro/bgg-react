@@ -14,7 +14,7 @@ const SearchContainer = styled.div<SearchContainerProps>`
     props.searching ? '1rem 5rem' : '10rem 5rem'};
 `;
 const GeekLogo = styled.img`
-  height: 10rem;
+  height: 6rem;
   margin-right: 0.5rem;
 `;
 

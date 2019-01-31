@@ -14,7 +14,7 @@ const PostersContainer = styled.div`
   display: flex;
   overflow-x: auto;
   width: 96%;
-  margin: auto;
+  margin: 1rem auto;
 `;
 
 interface PosterProps {
