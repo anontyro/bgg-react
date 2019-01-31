@@ -1,12 +1,14 @@
 import gql from 'graphql-tag';
 
 export const BASIC_SEARCH_QUERY = gql`
-searchGame(query: $query) {
-  name {
-    name
+  query SearchGame($query: String!) {
+    searchGame(query: $query) {
+      name {
+        name
+      }
+      id
+      itemType
+      yearPublished
+    }
   }
-  id
-  itemType
-  yearPublished
-}
 `;
