@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
+import BOARDGAME_DETAIL_QUERY from 'src/queries/boardgameDetailQuery';
+import { GameHeaderDetailComponent } from './components/gameDetails/component';
 
 interface Props {
   match: { params: { id: string } };
@@ -17,14 +20,33 @@ class BoardgameDetails extends React.Component<Props, State> {
     };
   }
   public componentDidMount() {
-    console.log(this.props.match.params);
     this.setState({
       boardGameId: this.props.match.params.id,
     });
   }
 
   public render() {
-    return <p>{this.props.match.params.id}</p>;
+    if (this.state.boardGameId === '') {
+      return null;
+    }
+    const gameId = parseInt(this.state.boardGameId, 10);
+    return (
+      <Query query={BOARDGAME_DETAIL_QUERY} variables={{ gameId }}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return <p>LOADING...</p>;
+          }
+          if (error) {
+            return <p>ERROR</p>;
+          }
+          if (data.boardgame) {
+            return <GameHeaderDetailComponent game={data.boardgame} />;
+          } else {
+            return <p>No Data for {this.state.boardGameId}</p>;
+          }
+        }}
+      </Query>
+    );
   }
 }
 

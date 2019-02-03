@@ -1,12 +1,12 @@
 import GenericObjectType from './genericObjectType';
 
 interface GameNameType {
-  name: string;
+  name: string[];
   primary: boolean;
   sortIndex: number;
 }
 
-export interface FullBoardGameType {
+export default interface FullBoardGameType {
   name: GameNameType;
   thumbnails: string[];
   images: string[];
@@ -15,7 +15,7 @@ export interface FullBoardGameType {
   maxPlayers: number;
   playTime: number;
   id: number;
-  yearPublished: number;
+  yearPublished?: number;
   mechanics: GenericObjectType[];
   category: GenericObjectType[];
   designer: GenericObjectType[];

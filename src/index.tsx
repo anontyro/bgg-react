@@ -14,12 +14,12 @@ const SERVERS = {
   PROD: 'https://bgg-api.alexwilkinson.co/graphql',
 };
 
-const client = new ApolloClient({
+export const graphQlClient = new ApolloClient({
   uri: SERVERS.PROD,
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  <ApolloProvider client={graphQlClient}>
     <Provider store={myStore}>
       <BrowserRouter>
         <App />
