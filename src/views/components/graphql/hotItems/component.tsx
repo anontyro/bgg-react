@@ -15,6 +15,7 @@ const PostersContainer = styled.div`
   overflow-x: auto;
   width: 96%;
   margin: 1rem auto;
+  height: 160px;
 `;
 
 interface PosterProps {
@@ -24,7 +25,6 @@ interface PosterProps {
 const PosterItem = styled.div<PosterProps>`
   background-image: url(${(props: any) => props.image});
   background-repeat: no-repeat;
-  height: 10rem;
   min-width: 10rem;
   max-width: 10rem;
   margin: 1rem;
