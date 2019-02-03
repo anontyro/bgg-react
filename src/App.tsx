@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
-import styled from 'styled-components';
 import MainFooter from './_layout/MainFooter';
 import MainHeader from './_layout/MainHeader';
 import './App.css';

@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import styled from 'styled-components';
 import * as actions from '../store/general/actions';
 import GeekSearch from './components/geekSearch/component';
 import HotItems from './components/graphql/hotItems/component';

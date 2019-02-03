@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
 import { BGG_BLUE } from 'src/data/constants/colours';
-import styled from 'styled-components';
 
 const FooterContainer = styled.div`
   padding: 1rem;

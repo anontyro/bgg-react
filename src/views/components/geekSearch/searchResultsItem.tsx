@@ -1,7 +1,7 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
-import { SearchBoardGameType } from 'src/types/graphql/boardGameType';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { SearchBoardGameType } from 'src/types/graphql/boardGameType';
 
 interface Props {
   game: SearchBoardGameType;

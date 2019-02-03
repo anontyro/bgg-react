@@ -1,8 +1,8 @@
+import styled from '@emotion/styled';
 import gql from 'graphql-tag';
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import HotItemType from 'src/types/graphql/hotItemType';
-import styled from 'styled-components';
 
 interface QueryResponse {
   loading: boolean;

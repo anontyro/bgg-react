@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { debounce } from 'lodash';
 import * as React from 'react';
-import styled from 'styled-components';
 import logo from '../../../static/images/bgg-logo.svg';
 import SearchResults from './searchResults';
 

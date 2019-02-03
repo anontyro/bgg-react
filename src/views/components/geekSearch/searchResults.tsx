@@ -1,8 +1,8 @@
+import styled from '@emotion/styled';
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { BASIC_SEARCH_QUERY } from 'src/queries/searchQuery';
 import { SearchBoardGameType } from 'src/types/graphql/boardGameType';
-import styled from 'styled-components';
 import SearchResultItem from './searchResultsItem';
 
 const SearchResultsContainer = styled.div`
