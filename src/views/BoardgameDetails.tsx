@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
 import BOARDGAME_DETAIL_QUERY from 'src/queries/boardgameDetailQuery';
 import { GameHeaderDetailComponent } from './components/gameDetails/component';
-import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
 
 interface Props {
   match: { params: { id: string } };

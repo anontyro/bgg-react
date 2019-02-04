@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
-import gql from 'graphql-tag';
 import * as React from 'react';
-import { Query } from 'react-apollo';
+import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
+import { HOT_ITEM_QUERY } from 'src/queries/hotItemQuery';
 import HotItemType from 'src/types/graphql/hotItemType';
 
-interface QueryResponse {
-  loading: boolean;
-  error: any;
-  data: any;
-}
+// interface QueryResponse {
+//   loading: boolean;
+//   error: any;
+//   data: any;
+// }
 
 const PostersContainer = styled.div`
   display: flex;
@@ -40,15 +40,7 @@ const GamePoster = (item: HotItemType) => {
   );
 };
 
-const createHotItemView = ({ loading, error, data }: QueryResponse) => {
-  if (loading) {
-    return <p>LOADING...</p>;
-  }
-  if (error) {
-    console.error(error);
-    return <p>ERROR</p>;
-  }
-
+const CreateHotItemView = ({ data }: any) => {
   return (
     <PostersContainer>
       {data.hotItems.map((item: HotItemType) => GamePoster(item))}
@@ -58,23 +50,9 @@ const createHotItemView = ({ loading, error, data }: QueryResponse) => {
 
 function HotItems() {
   return (
-    <Query
-      query={gql`
-        {
-          hotItems {
-            name
-            id
-            thumbnail
-            index
-            yearpublished
-          }
-        }
-      `}
-    >
-      {({ loading, error, data }) =>
-        createHotItemView({ loading, error, data })
-      }
-    </Query>
+    <GraphQlQueryWrap query={HOT_ITEM_QUERY}>
+      <CreateHotItemView />
+    </GraphQlQueryWrap>
   );
 }
 

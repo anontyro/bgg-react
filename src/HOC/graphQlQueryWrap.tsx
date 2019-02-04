@@ -8,7 +8,7 @@ import { Query } from 'react-apollo';
 
 interface GraphQlQueryProps {
   query: any;
-  variables: {};
+  variables?: {};
   children: React.ReactNode;
 }
 
@@ -29,7 +29,7 @@ const GraphQlQueryWrap = ({
         if (data) {
           const ehancedChildren = React.Children.map(children, child =>
             React.cloneElement(child as React.ReactElement<any>, {
-              game: data,
+              data,
             }),
           );
           return <div>{ehancedChildren}</div>;
