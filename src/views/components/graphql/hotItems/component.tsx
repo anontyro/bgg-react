@@ -4,12 +4,6 @@ import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
 import { HOT_ITEM_QUERY } from 'src/queries/hotItemQuery';
 import HotItemType from 'src/types/graphql/hotItemType';
 
-// interface QueryResponse {
-//   loading: boolean;
-//   error: any;
-//   data: any;
-// }
-
 const PostersContainer = styled.div`
   display: flex;
   overflow-x: auto;
@@ -40,13 +34,11 @@ const GamePoster = (item: HotItemType) => {
   );
 };
 
-const CreateHotItemView = ({ data }: any) => {
-  return (
-    <PostersContainer>
-      {data.hotItems.map((item: HotItemType) => GamePoster(item))}
-    </PostersContainer>
-  );
-};
+const CreateHotItemView = ({ data }: any) => (
+  <PostersContainer>
+    {data.hotItems.map((item: HotItemType) => GamePoster(item))}
+  </PostersContainer>
+);
 
 function HotItems() {
   return (

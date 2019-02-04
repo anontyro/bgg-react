@@ -16,29 +16,27 @@ const GraphQlQueryWrap = ({
   query,
   variables,
   children,
-}: GraphQlQueryProps) => {
-  return (
-    <Query query={query} variables={variables}>
-      {({ loading, error, data }) => {
-        if (loading) {
-          return <p>LOADING...</p>;
-        }
-        if (error) {
-          return <p>ERROR!!!</p>;
-        }
-        if (data) {
-          const ehancedChildren = React.Children.map(children, child =>
-            React.cloneElement(child as React.ReactElement<any>, {
-              data,
-            }),
-          );
-          return <div>{ehancedChildren}</div>;
-        } else {
-          return <p>No Data for: {JSON.stringify(variables)}</p>;
-        }
-      }}
-    </Query>
-  );
-};
+}: GraphQlQueryProps) => (
+  <Query query={query} variables={variables}>
+    {({ loading, error, data }) => {
+      if (loading) {
+        return <p>LOADING...</p>;
+      }
+      if (error) {
+        return <p>ERROR!!!</p>;
+      }
+      if (data) {
+        const ehancedChildren = React.Children.map(children, (child: any) =>
+          React.cloneElement(child as React.ReactElement<any>, {
+            data,
+          }),
+        );
+        return <div>{ehancedChildren}</div>;
+      } else {
+        return <p>No Data for: {JSON.stringify(variables)}</p>;
+      }
+    }}
+  </Query>
+);
 
 export default GraphQlQueryWrap;

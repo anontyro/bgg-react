@@ -4,7 +4,5 @@ a {
 }
 
 a:hover {
-  color: #292e62;
-  box-shadow: inset 0px 0px 6px 0px black;
-  background-color: #f3f3f3;
+  color: black;
 }
