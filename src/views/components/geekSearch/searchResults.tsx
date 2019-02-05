@@ -19,7 +19,7 @@ interface Props {
 const ResultsList = ({ data }: any) => (
   <SearchResultsContainer>
     {data.searchGame.map((game: SearchBoardGameType) => (
-      <SearchResultItem game={game} />
+      <SearchResultItem key={Date.now().toString()} game={game} />
     ))}
   </SearchResultsContainer>
 );

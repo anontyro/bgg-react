@@ -2,12 +2,21 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 import FullBoardGameType from 'src/types/graphql/boardGameType';
 
-interface HeaderProps {
-  image: string;
-}
+const GenericFlexDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const ThumbNail = styled.img`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  max-width: 190px;
+`;
 
 const HeaderContainer = styled.div`
-  height: 15rem;
+  height: 20rem;
   position: relative;
   width: 100vw;
 `;
@@ -22,6 +31,10 @@ const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+interface HeaderProps {
+  image: string;
+}
 
 const HeaderImage = styled.div<HeaderProps>`
   height: 100%;
@@ -72,8 +85,34 @@ function GameDetailHeader(props: Props) {
   return (
     <HeaderContainer>
       <HeaderImage image={game.images[0]} />
+      <ThumbNail src={game.thumbnails[0]} />
       <HeaderContent>
-        <MainName name={game.name[0].name} yearPublished={game.yearPublished} />
+        <div
+          style={{
+            width: '100%',
+          }}
+        >
+          <MainName
+            name={game.name[0].name}
+            yearPublished={game.yearPublished}
+          />
+          <GenericFlexDiv>
+            <GenericFlexDiv>
+              <span>
+                Players: {game.minPlayers} - {game.maxPlayers}
+              </span>
+            </GenericFlexDiv>
+            <GenericFlexDiv>
+              <span>Play Time: {game.playTime} minutes</span>
+            </GenericFlexDiv>
+          </GenericFlexDiv>
+          <GenericFlexDiv>
+            <span>Catagories: </span>
+            {game.category.map((item: any) => (
+              <span key={Date.now().toString()}>{item.name}</span>
+            ))}
+          </GenericFlexDiv>
+        </div>
       </HeaderContent>
     </HeaderContainer>
   );
