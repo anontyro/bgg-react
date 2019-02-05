@@ -2,8 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
 import BOARDGAME_DETAIL_QUERY from 'src/queries/boardgameDetailQuery';
-import { GameHeaderDetailComponent } from './components/gameDetails/component';
+import GameDetailHeader from './components/gameDetails/gameDetailsHeader';
 import GameDetailLayout from './components/gameDetails/layout';
+import GameDetailBody from './components/gameDetails/gameDetailsBody';
 
 interface Props {
   match: { params: { id: string } };
@@ -34,7 +35,8 @@ class BoardgameDetails extends React.Component<Props, State> {
     return (
       <GraphQlQueryWrap query={BOARDGAME_DETAIL_QUERY} variables={{ gameId }}>
         <GameDetailLayout>
-          <GameHeaderDetailComponent />
+          <GameDetailHeader />
+          <GameDetailBody />
         </GameDetailLayout>
       </GraphQlQueryWrap>
     );

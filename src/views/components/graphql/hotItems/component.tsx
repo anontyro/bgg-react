@@ -17,7 +17,7 @@ interface PosterProps {
 }
 
 const PosterItem = styled.div<PosterProps>`
-  background-image: url(${(props: any) => props.image});
+  background-image: url(${(props: PosterProps) => props.image});
   background-repeat: no-repeat;
   min-width: 10rem;
   max-width: 10rem;
