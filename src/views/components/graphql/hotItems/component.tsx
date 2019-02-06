@@ -10,6 +10,10 @@ const PostersContainer = styled.div`
   width: 96%;
   margin: 1rem auto;
   height: 160px;
+
+  @media (max-width: 600px) {
+    height: 90px;
+  }
 `;
 
 interface PosterProps {
@@ -23,6 +27,11 @@ const PosterItem = styled.div<PosterProps>`
   max-width: 10rem;
   margin: 1rem;
   background-size: 100%;
+
+  @media (max-width: 600px) {
+    min-width: 4rem;
+    max-width: 4rem;
+  }
 `;
 
 const GamePoster = (item: HotItemType) => {

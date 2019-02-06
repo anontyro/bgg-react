@@ -2,10 +2,40 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 import FullBoardGameType from 'src/types/graphql/boardGameType';
 
-const GenericFlexDiv = styled.div`
+interface FlexDivProps {
+  allowWrap?: boolean;
+}
+
+const GenericFlexDiv = styled.div<FlexDivProps>`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: ${(props: FlexDivProps) => (props.allowWrap ? 'wrap' : 'nowrap')};
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+`;
+
+const ItemFlexList = styled(GenericFlexDiv)`
+  @media (max-width: 600px) {
+    justify-content: space-evenly;
+  }
+`;
+
+const GenericListItem = styled.span`
+  width: 25%;
+  flex-wrap: wrap;
+  text-align: center;
+  @media (max-width: 600px) {
+    width: 30%;
+    text-align: center;
+  }
+`;
+
+const SubHeader = styled.span`
+  @media (max-width: 600px) {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const ThumbNail = styled.img`
@@ -13,10 +43,14 @@ const ThumbNail = styled.img`
   top: 1rem;
   left: 1rem;
   max-width: 190px;
+
+  @media (max-width: 600px) {
+    left: 30%;
+  }
 `;
 
 const HeaderContainer = styled.div`
-  height: 20rem;
+  height: 24rem;
   position: relative;
   width: 100vw;
 `;
@@ -30,6 +64,11 @@ const HeaderContent = styled.div`
   z-index: 10;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    bottom: 10px;
+    width: 91vw;
+  }
 `;
 
 interface HeaderProps {
@@ -49,6 +88,10 @@ const HeaderImage = styled.div<HeaderProps>`
   filter: blur(8px);
   -webkit-filter: blur(8px);
   background-image: url(${(props: HeaderProps) => props.image});
+
+  @media (max-width: 600px) {
+    background-position-y: 0;
+  }
 `;
 
 const NameStyle = styled.p`
@@ -58,6 +101,10 @@ const NameStyle = styled.p`
   color: white;
   -webkit-text-stroke: 1px black;
   font-weight: bold;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 interface NameProps {
@@ -96,22 +143,33 @@ function GameDetailHeader(props: Props) {
             name={game.name[0].name}
             yearPublished={game.yearPublished}
           />
-          <GenericFlexDiv>
-            <GenericFlexDiv>
+          <GenericFlexDiv allowWrap>
+            <GenericFlexDiv allowWrap>
               <span>
                 Players: {game.minPlayers} - {game.maxPlayers}
               </span>
             </GenericFlexDiv>
-            <GenericFlexDiv>
+            <GenericFlexDiv allowWrap>
               <span>Play Time: {game.playTime} minutes</span>
             </GenericFlexDiv>
           </GenericFlexDiv>
-          <GenericFlexDiv>
-            <span>Catagories: </span>
+
+          <ItemFlexList allowWrap>
+            <SubHeader>Catagories: </SubHeader>
             {game.category.map((item: any) => (
-              <span key={Date.now().toString()}>{item.name}</span>
+              <GenericListItem key={Date.now().toString()}>
+                {item.name}
+              </GenericListItem>
             ))}
-          </GenericFlexDiv>
+          </ItemFlexList>
+          <ItemFlexList allowWrap>
+            <SubHeader>Mechanics: </SubHeader>
+            {game.mechanics.map((item: any) => (
+              <GenericListItem key={Date.now().toString()}>
+                {item.name}
+              </GenericListItem>
+            ))}
+          </ItemFlexList>
         </div>
       </HeaderContent>
     </HeaderContainer>

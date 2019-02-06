@@ -10,22 +10,38 @@ interface SearchContainerProps {
 
 const SearchContainer = styled.div<SearchContainerProps>`
   display: flex;
+  flex-wrap: nowrap;
   margin: ${(props: SearchContainerProps) =>
     props.searching ? '1rem 5rem' : '10rem 5rem'};
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    margin: unset;
+  }
 `;
-const GeekLogo = styled.img`
+const GeekLogo = styled.img<SearchContainerProps>`
   height: 6rem;
   margin-right: 0.5rem;
+
+  @media (max-width: 600px) {
+    margin: 1rem auto;
+    display: ${(props: SearchContainerProps) =>
+      props.searching ? 'none' : 'block'};
+  }
 `;
 
 const SearchBar = styled.input`
-  width: 100%;
+  width: 90%;
   margin: auto;
   font-size: 2rem;
   padding: 0.3rem;
   border-radius: 0.5rem;
   outline: none;
   box-shadow: 8px 8px 20px -10px black;
+
+  @media (max-width: 600px) {
+    margin: 1rem auto;
+  }
 `;
 
 export interface Props {}
@@ -64,7 +80,7 @@ class GeekSearch extends React.Component<Props, State> {
       query,
       searching: false,
     });
-    if (query && query.length > 1) {
+    if (this.state.query && this.state.query.length > 1) {
       this.onSubmitSearch();
     }
   }
@@ -79,8 +95,13 @@ class GeekSearch extends React.Component<Props, State> {
     const hasQuery = this.state.query && this.state.query.length > 1;
     return (
       <React.Fragment>
-        <SearchContainer searching={this.state.searching}>
-          <GeekLogo src={logo} />
+        <SearchContainer
+          searching={this.state.searching && this.state.query.length > 1}
+        >
+          <GeekLogo
+            searching={this.state.searching && this.state.query.length > 1}
+            src={logo}
+          />
           <SearchBar
             onChange={this.onSearchChange}
             placeholder='Search Board Games...'
