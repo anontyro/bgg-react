@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import GraphQlQueryWrap from 'src/HOC/graphQlQueryWrap';
 import { HOT_ITEM_QUERY } from 'src/queries/hotItemQuery';
 import HotItemType from 'src/types/graphql/hotItemType';
@@ -9,10 +10,11 @@ const PostersContainer = styled.div`
   overflow-x: auto;
   width: 96%;
   margin: 1rem auto;
-  height: 160px;
+  height: 10rem;
+  overflow-y: hidden;
 
   @media (max-width: 600px) {
-    height: 90px;
+    height: 9rem;
   }
 `;
 
@@ -23,23 +25,27 @@ interface PosterProps {
 const PosterItem = styled.div<PosterProps>`
   background-image: url(${(props: PosterProps) => props.image});
   background-repeat: no-repeat;
-  min-width: 10rem;
-  max-width: 10rem;
+  min-width: 8rem;
+  max-width: 8rem;
   margin: 1rem;
   background-size: 100%;
+  height: 8rem;
 
   @media (max-width: 600px) {
     min-width: 4rem;
     max-width: 4rem;
+    height: 4rem;
   }
 `;
 
 const GamePoster = (item: HotItemType) => {
   const image = item.thumbnail;
   return (
-    <PosterItem image={image} key={item.id}>
-      &nbsp;
-    </PosterItem>
+    <Link to={`/boardgame/${item.id}`}>
+      <PosterItem image={image} key={item.id}>
+        &nbsp;
+      </PosterItem>
+    </Link>
   );
 };
 

@@ -26,15 +26,17 @@ const GenericListItem = styled.span`
   @media (max-width: 600px) {
     width: 30%;
     text-align: center;
+    display: none;
   }
 `;
 
 const SubHeader = styled.span`
+  font-weight: bold;
   @media (max-width: 600px) {
     width: 100%;
     text-align: center;
-    font-weight: bold;
     margin-bottom: 0.5rem;
+    display: none;
   }
 `;
 
@@ -53,6 +55,10 @@ const HeaderContainer = styled.div`
   height: 24rem;
   position: relative;
   width: 100vw;
+
+  @media (max-width: 600px) {
+    height: 20rem;
+  }
 `;
 
 const HeaderContent = styled.div`
