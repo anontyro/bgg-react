@@ -9,7 +9,7 @@ const PostersContainer = styled.div`
   display: flex;
   overflow-x: auto;
   width: 96%;
-  margin: 1rem auto;
+  margin: 0 auto;
   height: 10rem;
   overflow-y: hidden;
 

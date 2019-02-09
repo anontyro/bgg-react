@@ -5,6 +5,8 @@
  */
 import * as React from 'react';
 import { Query } from 'react-apollo';
+import PongLoader from 'src/components/pongLoader';
+import { isObjectEmpty } from 'src/utils/generic/generalUtil';
 
 interface GraphQlQueryProps {
   query: any;
@@ -34,7 +36,7 @@ const GraphQlQueryWrap = ({
   <Query query={query} variables={variables}>
     {({ loading, error, data }) => {
       if (loading) {
-        return <p>LOADING...</p>;
+        return <PongLoader />;
       }
       if (error) {
         return <p>ERROR!!!</p>;
@@ -47,7 +49,11 @@ const GraphQlQueryWrap = ({
         );
         return <div>{ehancedChildren}</div>;
       } else {
-        return <p>No Data for: {JSON.stringify(variables)}</p>;
+        const output = isObjectEmpty(variables)
+          ? 'Looks like there is nothing here'
+          : `No data for: ${JSON.stringify(variables)}`;
+
+        return <p style={{ textAlign: 'center' }}>{output}</p>;
       }
     }}
   </Query>
