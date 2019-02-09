@@ -3,19 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.6",
-    "@emotion/styled": "^10.0.6",
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "@types/graphql": "^14.0.5",
     "@types/lodash.debounce": "^4.0.4",
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
-    "@types/styled-components": "^4.1.6",
     "apollo-boost": "^0.1.27",
     "graphql": "^14.1.1",
     "lodash.debounce": "^4.0.8",
-    "react": "^16.7.0",
-    "react-apollo": "^2.4.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.1",
+    "react-apollo": "^2.4.1",
+    "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "^4.0.8",
@@ -30,12 +29,12 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.13",
-    "@types/node": "^10.12.18",
-    "@types/react": "^16.7.20",
-    "@types/react-dom": "^16.0.11",
-    "redux-devtools-extension": "^2.13.7",
-    "typescript": "^3.2.4"
+    "@types/jest": "^24.0.0",
+    "@types/node": "^10.12.24",
+    "@types/react": "^16.8.2",
+    "@types/react-dom": "^16.8.0",
+    "redux-devtools-extension": "^2.13.8",
+    "typescript": "^3.3.3"
   },
   "browserslist": [
     ">0.2%",
