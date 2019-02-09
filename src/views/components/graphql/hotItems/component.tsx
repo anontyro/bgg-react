@@ -14,7 +14,7 @@ const PostersContainer = styled.div`
   overflow-y: hidden;
 
   @media (max-width: 600px) {
-    height: 9rem;
+    height: 6rem;
   }
 `;
 
@@ -41,10 +41,8 @@ const PosterItem = styled.div<PosterProps>`
 const GamePoster = (item: HotItemType) => {
   const image = item.thumbnail;
   return (
-    <Link to={`/boardgame/${item.id}`}>
-      <PosterItem image={image} key={item.id}>
-        &nbsp;
-      </PosterItem>
+    <Link to={`/boardgame/${item.id}`} key={item.id}>
+      <PosterItem image={image}>&nbsp;</PosterItem>
     </Link>
   );
 };

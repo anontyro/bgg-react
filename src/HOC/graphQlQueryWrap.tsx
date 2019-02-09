@@ -10,12 +10,26 @@ interface GraphQlQueryProps {
   query: any;
   variables?: {};
   children: React.ReactNode;
+  returnedId?: string;
 }
+
+interface SafeData {
+  data: object;
+  returnedId?: string;
+}
+
+const safeDataCheck = ({ data, returnedId }: SafeData): boolean => {
+  if (returnedId) {
+    return !!data[returnedId];
+  }
+  return !!data;
+};
 
 const GraphQlQueryWrap = ({
   query,
   variables,
   children,
+  returnedId,
 }: GraphQlQueryProps) => (
   <Query query={query} variables={variables}>
     {({ loading, error, data }) => {
@@ -25,7 +39,7 @@ const GraphQlQueryWrap = ({
       if (error) {
         return <p>ERROR!!!</p>;
       }
-      if (data) {
+      if (safeDataCheck({ data, returnedId })) {
         const ehancedChildren = React.Children.map(children, (child: any) =>
           React.cloneElement(child as React.ReactElement<any>, {
             data,

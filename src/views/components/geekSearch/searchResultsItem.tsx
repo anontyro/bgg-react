@@ -40,7 +40,7 @@ const TitleDisplay = (props: Props) => {
 
 const SearchResultItem = (props: Props) => (
   <SearchLink to={`/boardgame/${props.game.id}`}>
-    <ItemContainer key={props.game.id}>
+    <ItemContainer>
       <TitleDisplay game={props.game} />
       <p>{props.game.itemType}</p>
     </ItemContainer>
