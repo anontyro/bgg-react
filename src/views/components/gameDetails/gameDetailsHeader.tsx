@@ -57,7 +57,7 @@ const HeaderContainer = styled.div`
   width: 100vw;
 
   @media (max-width: 600px) {
-    height: 20rem;
+    height: 16rem;
   }
 `;
 
@@ -72,7 +72,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
 
   @media (max-width: 600px) {
-    bottom: 10px;
+    bottom: -40px;
     width: 91vw;
   }
 `;

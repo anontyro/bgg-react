@@ -16,9 +16,10 @@ const MainFooter = () => {
   const year = new Date().getFullYear();
   return (
     <FooterContainer>
-      <div>BGG stuff</div>
       <div>Copyright {year}</div>
-      <div>Additional information</div>
+      <div>
+        By <a href='https://alexwilkinson.co'>Alex Wilkinson</a>
+      </div>
     </FooterContainer>
   );
 };

@@ -5,6 +5,13 @@ import FullBoardGameType from 'src/types/graphql/boardGameType';
 const BodyContainer = styled.div`
   width: 90%;
   margin: 2rem auto;
+
+  @media (max-width: 600px) {
+    margin: 1rem auto;
+    max-height: 35vh;
+    min-height: 35vh;
+    overflow-y: auto;
+  }
 `;
 
 interface Props {
